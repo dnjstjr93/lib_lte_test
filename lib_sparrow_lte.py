@@ -121,10 +121,48 @@ def lteReqGetRssi(missionPort):
 
 
 def missionPortData(missionPort):
+    lteQ = dict()
     while True:
         lteReqGetRssi(missionPort)
-        arrRssi = missionPort.readline()
-        print (arrRssi)
+        missionStr = missionPort.readlines()
+        # print (arrRssi)
+
+        arrLTEQ = missionStr[1].decode("utf-8").split(", ")
+        for idx in range(len(arrLTEQ)):
+            arrQValue = arrLTEQ[idx].split(':')
+            if (arrQValue[0] == '@DBG'):
+                lteQ['plmn'] = arrQValue[2]
+            elif (arrQValue[0] == 'Band'):
+                lteQ['band'] = int(arrQValue[1])
+            elif (arrQValue[0] == 'EARFCN'):
+                lteQ['earfcn'] = int(arrQValue[1])
+            elif (arrQValue[0] == 'Bandwidth'):
+                lteQ['bandwidth'] = int(arrQValue[1][:-3])
+                print('bandwidth: ', lteQ['bandwidth'])
+            elif (arrQValue[0] == 'PCI'):
+                lteQ['pci'] = int(arrQValue[1])
+            elif (arrQValue[0] == 'Cell-ID'):
+                lteQ['cell_id'] = arrQValue[1]
+            elif (arrQValue[0] == 'GUTI'):
+                lteQ['guti'] = arrQValue[1]
+            elif (arrQValue[0] == 'TAC'):
+                lteQ['tac'] = int(arrQValue[1])
+            elif (arrQValue[0] == 'RSRP'):
+                lteQ['rsrp'] = float(arrQValue[1][:-3])
+                print('rsrp: ', lteQ['rsrp'])
+            elif (arrQValue[0] == 'RSRQ'):
+                lteQ['rsrq'] = float(arrQValue[1][:-3])
+                print('rsrq: ', lteQ['rsrq'])
+            elif (arrQValue[0] == 'RSSI'):
+                lteQ['rssi'] = float(arrQValue[1][:-3])
+                print('rssi: ', lteQ['rssi'])
+            elif (arrQValue[0] == 'SINR'):
+                lteQ['sinr'] = float(arrQValue[1][:-2])
+                print('sinr: ', lteQ['sinr'])
+
+
+
+
         # send_data_to_msw(data_topic,lteQ)
 
         # lteQ.rssi = -Math.random()*100;
