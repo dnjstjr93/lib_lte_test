@@ -133,50 +133,50 @@ missionBaudrate = lib["serialBaudrate"]
 missionPortOpening(missionPort, missionPortNum, missionBaudrate)
 
 
-def missionPortOpen(missionPortNum, missionBaudrate):
-    # Connect serial
-    global missionPort
-    print('Connect to serial...')
-    try:
-        missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout=2)
-        if missionPort.isOpen():
-            print('missionPort Open. ', missionPortNum, 'Data rate: ', missionBaudrate)
-            mission_thread = threading.Thread(
-                target=missionPortData, args=(missionPort,)
-            )
-            mission_thread.start()
+# def missionPortOpen(missionPortNum, missionBaudrate):
+#     # Connect serial
+#     global missionPort
+#     print('Connect to serial...')
+#     try:
+#         missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout=2)
+#         if missionPort.isOpen():
+#             print('missionPort Open. ', missionPortNum, 'Data rate: ', missionBaudrate)
+#             mission_thread = threading.Thread(
+#                 target=missionPortData, args=(missionPort,)
+#             )
+#             mission_thread.start()
 
-            return missionPort
-    except serial.SerialException as e:
-        missionPortError(e)
-    except TypeError as e:
-        missionPortClose()
-        missionPort.close()
-
-
-def missionPortClose():
-    print('missionPort closed!')
+#             return missionPort
+#     except serial.SerialException as e:
+#         missionPortError(e)
+#     except TypeError as e:
+#         missionPortClose()
+#         missionPort.close()
 
 
-def missionPortError(err):
-    print('[missionPort error]: ', err)
+# def missionPortClose():
+#     print('missionPort closed!')
 
 
-def lteReqGetRssi(missionPort):
-    if missionPort is not None:
-        if missionPort.isOpen():
-            atcmd = b'AT@DBG\r'
-            missionPort.write(atcmd)
+# def missionPortError(err):
+#     print('[missionPort error]: ', err)
 
 
-def send_data_to_msw (data_topic, obj_data):
-    lib_mqtt_client.publish(data_topic, obj_data)
+# def lteReqGetRssi(missionPort):
+#     if missionPort is not None:
+#         if missionPort.isOpen():
+#             atcmd = b'AT@DBG\r'
+#             missionPort.write(atcmd)
 
 
-def missionPortData(missionPort):
-    while True:
-        arrRssi = missionPort.read()
-#        send_data_to_msw(data_topic,lteQ)
+# def send_data_to_msw (data_topic, obj_data):
+#     lib_mqtt_client.publish(data_topic, obj_data)
+
+
+# def missionPortData(missionPort):
+#     while True:
+#         arrRssi = missionPort.read()
+# #        send_data_to_msw(data_topic,lteQ)
 
 # def msw_mqtt_connect(broker_ip, port):
 #     lib_mqtt_client = mqtt.Client()
