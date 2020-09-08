@@ -124,7 +124,7 @@ def lteReqGetRssi(missionPort):
 
 def missionPortData(missionPort):
     while True:
-        arrRssi = missionPort.read()
+        arrRssi = missionPort.readline()
         print (arrRssi)
         # send_data_to_msw(data_topic,lteQ)
 
