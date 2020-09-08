@@ -68,7 +68,7 @@ lib['serialBaudrate'] = argv[2]
 # client.loop_forever()
 
 
-def missionPortOpening():
+def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
     if (missionPort == None):
         try:
             missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout = 10)
@@ -88,5 +88,4 @@ def missionPortOpening():
 missionPort = None
 missionPortNum = lib["serialPortNum"]
 missionBaudrate = lib["serialBaudrate"]
-missionPortOpening()
-
+missionPortOpening(missionPort, missionPortNum, missionBaudrate)
