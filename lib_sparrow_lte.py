@@ -97,6 +97,7 @@ def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
             missionPortOpen()
 
 def missionPortOpen():
+    print('missionPort open!')
     missionPort.open()
 
 def missionPortClose():
@@ -111,7 +112,8 @@ def missionPortError(err):
 
 def lteReqGetRssi(missionPort):
     if missionPort is not None:
-        if missionPort.isOpen():
+        if missionPort.is_open:
+            print ("port open")
             atcmd = b'AT@DBG\r'
             missionPort.write(atcmd)
 
