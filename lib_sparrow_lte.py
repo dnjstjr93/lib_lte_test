@@ -193,10 +193,7 @@ def missionPortData(missionPort):
                 lteQ['emm_cause'] = int(arrQValue[1])
             elif (arrQValue[0] == 'ESM Cause'):
                 lteQ['esm_cause'] = int(arrQValue[1])
-            elif (arrQValue[0] == '(1)IPv4'):
-                lteQ['ipv4_1'] = arrQValue[1]
-            elif (arrQValue[0] == '(2)IPv4'):
-                lteQ['ipv4_2'] = arrQValue[1]                
+            
 
         print ('lteQ: \n', lteQ)
 
