@@ -81,6 +81,7 @@ def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
         try:
             missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout = 2)
             print ('missionPort open. ' + missionPortNum + ' Data rate: ' + missionBaudrate)
+            lteReqGetRssi(missionPort)
             mission_thread = threading.Thread(
                 target=missionPortData, args=(missionPort,)
             )
