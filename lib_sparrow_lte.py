@@ -197,11 +197,11 @@ def missionPortData(missionPort):
 
         print ('lteQ: \n', lteQ)
 
-        # send_data_to_msw(data_topic,lteQ)
-
         # lteQ.rssi = -Math.random()*100;
-        # var container_name = 'LTE';
-        # var data_topic = '/MUV/data/' + lib.name + '/' + container_name;
+        container_name = lib["data"][0]
+        print(container_name)
+        data_topic = '/MUV/data/' + lib["name"] + '/' + container_name
+
 
         # setTimeout(send_data_to_msw, 0, data_topic, lteQ);
 
