@@ -137,6 +137,7 @@ def missionPortData(missionPort):
             elif (arrQValue[0] == 'EARFCN'):
                 lteQ['earfcn'] = int(arrQValue[1])
             elif (arrQValue[0] == 'Bandwidth'):
+                print('bandwidth origin: ', arrQValue[1])
                 lteQ['bandwidth'] = int(arrQValue[1][:-3])
                 print('bandwidth: ', lteQ['bandwidth'])
             elif (arrQValue[0] == 'PCI'):
@@ -148,15 +149,19 @@ def missionPortData(missionPort):
             elif (arrQValue[0] == 'TAC'):
                 lteQ['tac'] = int(arrQValue[1])
             elif (arrQValue[0] == 'RSRP'):
+                print('rsrp origin: ', arrQValue[1])
                 lteQ['rsrp'] = float(arrQValue[1][:-3])
                 print('rsrp: ', lteQ['rsrp'])
             elif (arrQValue[0] == 'RSRQ'):
+                print('rsrq origin: ', arrQValue[1])
                 lteQ['rsrq'] = float(arrQValue[1][:-3])
                 print('rsrq: ', lteQ['rsrq'])
             elif (arrQValue[0] == 'RSSI'):
+                print('rssi origin: ', arrQValue[1])
                 lteQ['rssi'] = float(arrQValue[1][:-3])
                 print('rssi: ', lteQ['rssi'])
             elif (arrQValue[0] == 'SINR'):
+                print('sinr origin: ', arrQValue[1])
                 lteQ['sinr'] = float(arrQValue[1][:-2])
                 print('sinr: ', lteQ['sinr'])
 
