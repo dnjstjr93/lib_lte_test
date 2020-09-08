@@ -81,7 +81,6 @@ def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
         try:
             missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout = 2)
             print ('missionPort open. ' + missionPortNum + ' Data rate: ' + missionBaudrate)
-            lteReqGetRssi(missionPort)
             mission_thread = threading.Thread(
                 target=missionPortData, args=(missionPort,)
             )
@@ -124,7 +123,8 @@ def lteReqGetRssi(missionPort):
 
 def missionPortData(missionPort):
     while True:
-        arrRssi = missionPort.readline()
+        lteReqGetRssi(missionPort)
+        arrRssi = missionPort.read()
         print (arrRssi)
         # send_data_to_msw(data_topic,lteQ)
 
