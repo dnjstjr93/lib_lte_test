@@ -187,7 +187,7 @@ def missionPortData(missionPort):
                 lteQ['emm_state'] = arrQValue[1]
             elif (arrQValue[0] == 'RRC state'):
                 lteQ['rrc_state'] = arrQValue[1]
-            elif (arrQValue[0] == 'NET OP Mode'):
+            elif (arrQValue[0] == 'Net OP Mode'):
                 lteQ['net_op_mode'] = arrQValue[1]
             elif (arrQValue[0] == 'EMM Cause'):
                 lteQ['emm_cause'] = int(arrQValue[1])
