@@ -79,7 +79,7 @@ lib['serialBaudrate'] = argv[2]
 def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
     if (missionPort == None):
         try:
-            missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout = 10)
+            missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout = 2)
             print ('missionPort open. ' + missionPortNum + ' Data rate: ' + missionBaudrate)
             mission_thread = threading.Thread(
                 target=missionPortData, args=(missionPort,)
