@@ -1,0 +1,1 @@
+"{\n\t\"name\": \"lib_sparrow_lte\",\n\t\"target\": \"armv6\",\n\t\"description\": \"[name] [portnum] [baudrate]\",\n\t\"scripts\": \"./lib_sparrow_lte /dev/ttyUSB1 115200\",\n\t\"data\": [\n\t\t\"LTE\"\n\t],\n\t\"control\": []\n}"
