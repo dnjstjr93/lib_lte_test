@@ -12,7 +12,7 @@ port = 1883
 global lib_mqtt_client
 
 global missionPort
-lteQ = {}
+global lteQ
 sleep_sec = 1
 
 try:
@@ -77,6 +77,7 @@ lib['serialBaudrate'] = argv[2]
 
 
 def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
+    global lteQ
     if (missionPort == None):
         try:
             missionPort = serial.Serial(missionPortNum, missionBaudrate, timeout = 2)
@@ -95,6 +96,11 @@ def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
     else:
         if (missionPort.is_open == False):
             missionPortOpen()
+
+            # lteQ.rssi = -Math.random()*100;
+            container_name = 'LTE'
+            data_topic = '/MUV/data/' + lib["name"] + '/' + container_name
+            # send_data_to_msw(data_topic, lteQ)
 
 def missionPortOpen():
     print('missionPort open!')
@@ -121,6 +127,7 @@ def lteReqGetRssi(missionPort):
 
 
 def missionPortData(missionPort):
+    global lteQ
     lteQ = dict()
     while True:
         lteReqGetRssi(missionPort)
@@ -193,17 +200,13 @@ def missionPortData(missionPort):
                 lteQ['emm_cause'] = int(arrQValue[1])
             elif (arrQValue[0] == 'ESM Cause'):
                 lteQ['esm_cause'] = arrQValue[1].split(",")[0]
-            
 
         print ('lteQ: \n', lteQ)
 
-        # lteQ.rssi = -Math.random()*100;
         container_name = lib["data"][0]
-        print(container_name)
         data_topic = '/MUV/data/' + lib["name"] + '/' + container_name
 
-
-        # setTimeout(send_data_to_msw, 0, data_topic, lteQ);
+        # send_data_to_msw(data_topic, lteQ)
 
 missionPort = None
 missionPortNum = lib["serialPortNum"]
