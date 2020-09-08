@@ -113,7 +113,6 @@ def missionPortError(err):
 def lteReqGetRssi(missionPort):
     if missionPort is not None:
         if missionPort.is_open:
-            print ("port open")
             atcmd = b'AT@DBG\r'
             missionPort.write(atcmd)
 
@@ -124,7 +123,7 @@ def lteReqGetRssi(missionPort):
 def missionPortData(missionPort):
     while True:
         lteReqGetRssi(missionPort)
-        arrRssi = missionPort.read()
+        arrRssi = missionPort.readline()
         print (arrRssi)
         # send_data_to_msw(data_topic,lteQ)
 
