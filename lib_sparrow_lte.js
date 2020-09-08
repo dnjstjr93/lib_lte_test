@@ -42,8 +42,6 @@ catch (e) {
     fs.writeFileSync(my_lib_name + '.json', JSON.stringify(lib, null, 4), 'utf8');
 }
 
-console.log(lib)
-
 lib.serialPortNum = argv[0];
 lib.serialBaudrate = argv[1];
 

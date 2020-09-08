@@ -94,7 +94,10 @@ def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
             missionPortClose()
     else:
         if (missionPort.is_open == False):
-            missionPort.open()
+            missionPortOpen()
+
+def missionPortOpen():
+    missionPort.open()
 
 def missionPortClose():
     global missionPort
@@ -119,6 +122,7 @@ def lteReqGetRssi(missionPort):
 def missionPortData(missionPort):
     while True:
         arrRssi = missionPort.read()
+        print (arrRssi)
 #        send_data_to_msw(data_topic,lteQ)
 
             # lteQ.rssi = -Math.random()*100;
