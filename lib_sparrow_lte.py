@@ -192,7 +192,7 @@ def missionPortData(missionPort):
             elif (arrQValue[0] == 'EMM Cause'):
                 lteQ['emm_cause'] = int(arrQValue[1])
             elif (arrQValue[0] == 'ESM Cause'):
-                lteQ['esm_cause'] = arrQValue[1]
+                lteQ['esm_cause'] = arrQValue[1].split(",")[0]
             
 
         print ('lteQ: \n', lteQ)
