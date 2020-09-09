@@ -77,7 +77,7 @@ def missionPortOpening(missionPort, missionPortNum, missionBaudrate):
             # lteQ.rssi = -Math.random()*100;
             container_name = 'LTE'
             data_topic = '/MUV/data/' + lib["name"] + '/' + container_name
-            # send_data_to_msw(data_topic, lteQ)
+            send_data_to_msw(data_topic, lteQ)
 
 def missionPortOpen():
     print('missionPort open!')
@@ -99,8 +99,8 @@ def lteReqGetRssi(missionPort):
             atcmd = b'AT@DBG\r'
             missionPort.write(atcmd)
 
-# def send_data_to_msw (data_topic, obj_data):
-#     lib_mqtt_client.publish(data_topic, obj_data)
+def send_data_to_msw (data_topic, obj_data):
+    lib_mqtt_client.publish(data_topic, obj_data)
 
 
 def missionPortData(missionPort):
@@ -183,7 +183,7 @@ def missionPortData(missionPort):
         container_name = lib["data"][0]
         data_topic = '/MUV/data/' + lib["name"] + '/' + container_name
 
-        # send_data_to_msw(data_topic, lteQ)
+        send_data_to_msw(data_topic, lteQ)
 
 
 if __name__ == '__main__':
