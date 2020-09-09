@@ -72,7 +72,7 @@ function msw_mqtt_connect(broker_ip, port) {
 
         lib_mqtt_client.on('connect', function () {
             console.log('[msw_mqtt_connect] connected to ' + broker_ip);
-            console.log(lib_topic)
+            console.log('lib_topic: ' + lib_topic)
             for(var idx in lib_topic) {
                 if(lib_topic.hasOwnProperty(idx)) {
                     lib_mqtt_client.subscribe(lib_topic[idx]);
