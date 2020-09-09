@@ -18,10 +18,22 @@ var spawn = require('child_process').spawn;
 //     console.log('error: ' + code);
 // });
 
-const { execFile } = require('child_process');
-const child = execFile('./lib_sparrow_lte.exe', ['/dev/ttyUSB1', '115200'], (error, stdout, stderr) => {
-  if (error) {
-    throw error;
-  }
-  console.log(stdout);
+// const { execFile } = require('child_process');
+// const child = execFile('lib_sparrow_lte.exe', ['/dev/ttyUSB1', '115200'], (error, stdout, stderr) => {
+//   if (error) {
+//     throw error;
+//   }
+//   console.log(stdout);
+// });
+
+const exec = require('child_process').execFile;
+var cmd = 'lib_sparrow_lte.exe /dev/ttyUSB1 115200';
+
+exec(cmd, function(error, stdout, stderr) {
+       // command output is in stdout
+       console.log('stdout:', stdout);
+       console.log('stderr:', stderr);
+       if (error !== null) {
+           console.log('exec error:', error);
+       }
 });
