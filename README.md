@@ -1,1 +1,0 @@
-# lib_lte_test

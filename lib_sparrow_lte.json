@@ -6,7 +6,5 @@
     "data": [
         "LTE"
     ],
-    "control": [
-        "Res_LTE"
-    ]
+    "control": []
 }
