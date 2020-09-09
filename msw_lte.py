@@ -187,6 +187,9 @@ def missionPortData(missionPort):
 
         send_data_to_msw(data_topic, lteQ)
 
+        lteQ = dict()
+        print(lteQ)
+
 
 if __name__ == '__main__':
     try:
