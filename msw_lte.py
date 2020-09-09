@@ -4,7 +4,7 @@ from time import sleep
 
 argv = sys.argv
 
-my_lib_name = 'lib_sparrow_lte'
+my_lib_name = 'msw_lte'
 
 global lib_topic
 global lib_mqtt_client
