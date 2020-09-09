@@ -145,7 +145,7 @@ def missionPortData(missionPort):
         for idx in range(len(arrLTEQ)):
             arrQValue = arrLTEQ[idx].split(':')
             if (arrQValue[0] == '@DBG'):
-                lteQ['frequency'] = arrQValue[2]
+                lteQ['frequency'] = int(arrQValue[2])
             elif (arrQValue[0] == 'Band'):
                 lteQ['band'] = int(arrQValue[1])
             elif (arrQValue[0] == 'BW'):
@@ -183,7 +183,7 @@ def missionPortData(missionPort):
 
         container_name = lib["data"][0]
         data_topic = '/MUV/data/' + lib["name"] + '/' + container_name
-        lteQ = json.dumps(lteQ, indent="\t")
+        lteQ = json.dumps(lteQ)
 
         send_data_to_msw(data_topic, lteQ)
 
