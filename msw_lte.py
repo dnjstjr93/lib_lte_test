@@ -183,6 +183,7 @@ def missionPortData(missionPort):
 
         container_name = lib["data"][0]
         data_topic = '/MUV/data/' + lib["name"] + '/' + container_name
+        lteQ = json.dumps(lteQ, indent="\t")
 
         send_data_to_msw(data_topic, lteQ)
 
@@ -204,8 +205,8 @@ if __name__ == '__main__':
         lib["control"] = []
         lib = json.dumps(lib, indent="\t")
 
-        with open('./' + my_lib_name + '.json', 'w', encoding='utf-8') as make_file:
-            json.dump(lib, make_file, indent="\t")
+        with open('./' + my_lib_name + '.json', 'w', encoding='utf-8') as json_file:
+            json.dump(lib, json_file, indent="\t")
 
 
     lib['serialPortNum'] = argv[1]
