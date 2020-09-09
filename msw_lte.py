@@ -5,7 +5,7 @@ from time import sleep
 
 argv = sys.argv
 
-my_lib_name = 'msw_lte'
+# my_lib_name = 'msw_lte'
 
 global lib_topic
 global lib_mqtt_client
@@ -192,6 +192,8 @@ def missionPortData(missionPort):
 
 
 if __name__ == '__main__':
+    my_lib_name = 'msw_ltee'
+
     try:
         lib = dict()
         with open(my_lib_name + '.json', 'r') as f:
@@ -206,10 +208,11 @@ if __name__ == '__main__':
         lib["scripts"] = './' + my_lib_name + ' /dev/ttyUSB1 115200'
         lib["data"] = ['LTE']
         lib["control"] = []
-        lib = json.dumps(lib, indent="\t")
+        lib = json.dumps(lib, indent=4)
+        lib = json.loads(lib)
 
         with open('./' + my_lib_name + '.json', 'w', encoding='utf-8') as json_file:
-            json.dump(lib, json_file, indent="\t")
+            json.dump(lib, json_file, indent=4)
 
 
     lib['serialPortNum'] = argv[1]
