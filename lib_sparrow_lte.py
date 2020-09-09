@@ -39,21 +39,17 @@ def on_message(client, userdata, msg):
 def msw_mqtt_connect(broker_ip, port):
     global lib_topic
     global lib_mqtt_client
+
+    lib_topic = ''
+
     lib_mqtt_client = mqtt.Client()
     lib_mqtt_client.on_connect = on_connect
     lib_mqtt_client.on_disconnect = on_disconnect
     lib_mqtt_client.on_subscribe = on_subscribe
     lib_mqtt_client.on_message = on_message
     lib_mqtt_client.connect(broker_ip, port)
-    lib_mqtt_client.subscribe(lib_muv_topic, 0)
-    print(lib_muv_topic)
-#    for idx in lib['topic']:
-#        if idx in lib['topic']:
-#            idx = lib['topic'].index(idx)
-#            lib_mqtt_client.subscribe(str(lib['topic'][idx]))
-#    print('[lib_mqtt_connect] lib_topic[' ,'+', idx ,'+' ']: ', lib['topic'][idx]);
+    lib_mqtt_client.subscribe(lib_topic, 0)
     lib_mqtt_client.loop_start()
-    # lib_mqtt_client.loop_forever()
     return lib_mqtt_client
 
 
@@ -217,17 +213,7 @@ if __name__ == '__main__':
     broker_ip = 'localhost'
     port = 1883
 
-    client = mqtt.Client()
-
-    client.on_connect = on_connect
-    client.on_disconnect = on_disconnect
-    client.on_subscribe = on_subscribe
-    client.on_message = on_message
-
-    client.connect(broker_ip, port)
-
-    client.subscribe('common', 1)
-    client.loop_forever()
+    msw_mqtt_connect(broker_ip, port)
 
     missionPort = None
     missionPortNum = lib["serialPortNum"]
